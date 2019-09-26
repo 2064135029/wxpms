@@ -1,19 +1,21 @@
+import wepy from 'wepy'
 
-
-export default {
-  data: {
-    mixin: 'MixinText'
-  },
-  methods: {
-    mixintap () {
-      this.mixin = 'MixinText' + (Math.random() + '').substring(3, 7);
-      console.log('mixin method tap');
-    },
+export default class testMixin extends wepy.mixin {
+  data = {
+    mixin: 'This is mixin data.'
+  }
+  methods = {
     tap () {
-      console.log('tap in mixin');
+      this.mixin = 'mixin data was changed'
+      console.log('mixin method tap')
     }
-  },
-  created () {
-    console.log('created in mixin');
+  }
+
+  onShow() {
+    console.log('mixin onShow')
+  }
+
+  onLoad() {
+    console.log('mixin onLoad')
   }
 }

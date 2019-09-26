@@ -6,6 +6,11 @@ module.exports = {
   eslint: true,
   cliLogs: !prod,
   build: {
+    web: {
+      htmlTemplate: path.join('src', 'index.template.html'),
+      htmlOutput: path.join('web', 'index.html'),
+      jsOutput: path.join('web', 'index.js')
+    }
   },
   resolve: {
     alias: {
@@ -19,19 +24,51 @@ module.exports = {
     less: {
       compress: prod
     },
+    /*sass: {
+      outputStyle: 'compressed'
+    },*/
     babel: {
       sourceMap: true,
       presets: [
-        '@babel/preset-env'
+        'env'
       ],
       plugins: [
-        '@wepy/babel-plugin-import-regenerator'
+        'transform-class-properties',
+        'transform-decorators-legacy',
+        'transform-object-rest-spread',
+        'transform-export-extensions',
       ]
     }
   },
-  plugins: [],
+  plugins: {
+  },
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
   }
 }
 
+if (prod) {
+
+  // 压缩sass
+  // module.exports.compilers['sass'] = {outputStyle: 'compressed'}
+
+  // 压缩js
+  module.exports.plugins = {
+    uglifyjs: {
+      filter: /\.js$/,
+      config: {
+      }
+    },
+    imagemin: {
+      filter: /\.(jpg|png|jpeg)$/,
+      config: {
+        jpg: {
+          quality: 80
+        },
+        png: {
+          quality: 80
+        }
+      }
+    }
+  }
+}

@@ -7,31 +7,38 @@
   }
 </style>
 <template>
-  <div class="list">
-     This component is not used. because list is an aliasField in package.json 
-  </div>
+  <view class="list">
+  <view>
+    <button @tap="add" size="mini">添加列表</button>
+  </view>
+    <block wx:for-items="{{list}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+      <view @tap="tap" class="mylist">
+        <text>{{item.id}}</text>: {{item.title}}
+      </view>
+    </block>
+  </view>
 </template>
 <script>
-  import wepy from '@wepy/core'
+  import wepy from 'wepy'
 
-  wepy.component({
-    data: {
+  export default class List extends wepy.component {
+    data = {
       list: [
         {
           id: '0',
           title: 'loading'
         }
       ]
-    },
+    }
 
-    events: {
+    events = {
       'index-broadcast': (...args) => {
         let $event = args[args.length - 1]
         console.log(`${this.$name} receive ${$event.name} from ${$event.source.name}`)
       }
-    },
+    }
 
-    methods: {
+    methods = {
       tap () {
         // this.num = this.num + 1
         console.log(this.$name + ' tap')
@@ -44,5 +51,5 @@
 
     onLoad () {
     }
-  });
+  }
 </script>

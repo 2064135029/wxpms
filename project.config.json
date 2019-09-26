@@ -9,5 +9,5 @@
   "compileType": "miniprogram",
   "appid": "touristappid",
   "projectname": "wxpms",
-  "miniprogramRoot": "./weapp"
+  "miniprogramRoot": "./dist"
 }
