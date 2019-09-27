@@ -46,6 +46,11 @@
           <entry key="ESLintLanguageService" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
@@ -262,7 +267,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="177" y="94" width="1440" height="694" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
